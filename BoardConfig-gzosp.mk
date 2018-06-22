@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Duplicate rules
+BUILD_BROKEN_DUP_RULES := true
+
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image.lz4
 KERNEL_LD := LD=ld.lld
