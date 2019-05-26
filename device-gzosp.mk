@@ -24,6 +24,13 @@ WITH_GMS_FI := true
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-gzosp
 
+# Partitions
+AB_OTA_PARTITIONS += \
+    vendor \
+
 # Privapp Permissions
 PRODUCT_COPY_FILES += \
     device/google/coral/permissions/privapp-permissions-aosp-extended.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-aosp-extended.xml
+
+# Vendor Security Patch Level
+VENDOR_SECURITY_PATCH := "2020-07-05"
