@@ -32,6 +32,10 @@ WITH_GMS_FI := true
 PRODUCT_PACKAGES += \
     hardware.google.light@1.0.vendor \
 
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sdm \
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-gzosp
 
