@@ -28,6 +28,10 @@ PRODUCT_COPY_FILES += \
 # GMS
 WITH_GMS_FI := true
 
+# Lights
+PRODUCT_PACKAGES += \
+    hardware.google.light@1.0.vendor \
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-gzosp
 
