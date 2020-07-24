@@ -14,5 +14,8 @@
 # limitations under the License.
 #
 
+# GMS
+WITH_GMS_FI := true
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-gzosp
