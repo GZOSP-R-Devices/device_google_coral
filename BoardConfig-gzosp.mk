@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2020 The gzospOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.lz4
 KERNEL_LD := LD=ld.lld
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    DTC=$(shell pwd)/prebuilts/tools-lineage/$(HOST_OS)-x86/dtc/dtc \
+    DTC=$(shell pwd)/prebuilts/tools-gzosp/$(HOST_OS)-x86/dtc/dtc \
     MKDTIMG=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/libufdt/mkdtimg
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CLANG_COMPILE := true
@@ -30,19 +30,11 @@ TARGET_KERNEL_CONFIG := floral_defconfig
 TARGET_KERNEL_SOURCE := kernel/google/coral
 TARGET_NEEDS_DTBOIMAGE := true
 
-# Manifests
-DEVICE_MANIFEST_FILE += device/google/coral/lineage_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += device/google/coral/lineage_compatibility_matrix.xml
-
 # Partitions
 ifneq ($(PRODUCT_USE_DYNAMIC_PARTITIONS), true)
     BOARD_VENDORIMAGE_PARTITION_SIZE := 744660992
 endif
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-
-# SELinux
-BOARD_SEPOLICY_DIRS += device/google/coral/sepolicy-lineage/dynamic
-BOARD_SEPOLICY_DIRS += device/google/coral/sepolicy-lineage/vendor
 
 # Verified Boot
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
