@@ -25,35 +25,29 @@ VENDOR=google
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+GZOSP_ROOT="$MY_DIR"/../../../..
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
+HELPER="$GZOSP_ROOT"/vendor/gzosp/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
 fi
 . "$HELPER"
 
-while [ "$1" != "" ]; do
-    case $1 in
-        -n | --no-cleanup )     CLEAN_VENDOR=false
-                                ;;
-        -s | --section )        shift
-                                SECTION=$1
-                                CLEAN_VENDOR=false
-                                ;;
-        --flame )               shift
-                                FLAME_SRC=$1
-                                ;;
-        --coral )               shift
-                                CORAL_SRC=$1
-                                ;;
-    esac
-    shift
-done
-
-if [ -z "$SRC" ]; then
-    SRC=adb
+if [ $# -eq 0 ]; then
+  SRC=adb
+else
+  if [ $# -eq 1 ]; then
+    SRC=$1
+  else
+    echo "$0: bad number of arguments"
+    echo ""
+    echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
+    echo ""
+    echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
+    echo "the device using adb pull."
+    exit 1
+  fi
 fi
 
 function blob_fixup() {
@@ -68,14 +62,14 @@ function blob_fixup() {
 }
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false "$CLEAN_VENDOR"
+setup_vendor "$DEVICE" "$VENDOR" "$GZOSP_ROOT"
 
 extract "$MY_DIR"/coral-proprietary-files.txt "$CORAL_SRC" "$SECTION"
 extract "$MY_DIR"/coral-proprietary-files-vendor.txt "$CORAL_SRC" "$SECTION"
 
 # Reinitialize the helper for flame
 DEVICE=flame
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false "$CLEAN_VENDOR"
+setup_vendor "$DEVICE" "$VENDOR" "$GZOSP_ROOT"
 
 extract "$MY_DIR"/flame-proprietary-files.txt "$FLAME_SRC" "$SECTION"
 extract "$MY_DIR"/flame-proprietary-files-vendor.txt "$FLAME_SRC" "$SECTION"
