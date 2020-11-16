@@ -90,3 +90,10 @@ persist.bluetooth.bqr.min_interval_ms=500
 
 # USAP
 persist.device_config.runtime_native.usap_pool_enabled=true
+
+ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.msmnile.api30
+graphics.gpu.profiler.support=true
+graphics.gpu.profiler.vulkan_layer_apk=com.google.pixel.coral.gpuprofiling.vulkanlayer
+ro.com.google.clientidbase=android-google
+ro.error.receiver.system.apps=com.google.android.gms
+ro.llkd.enable=false

@@ -39,12 +39,94 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-gzosp
 AB_OTA_PARTITIONS += \
     vendor \
 
+# Properties
+TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
+
+# Vendor packages
+PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.6-impl-google.vendor:64 \
+    android.hardware.identity-support-lib.vendor:64 \
+    android.hardware.sensors@2.0-ScopedWakelock.vendor \
+    audio.primary.msmnile \
+    chre \
+    com.qualcomm.qti.bluetooth_audio@1.0 \
+    ese_spi_st \
+    hardware.google.light@1.0.vendor \
+    libavservices_minijail_vendor:32 \
+    libcamera2ndk_vendor \
+    libcld80211 \
+    libcodec2_hidl@1.0.vendor:32 \
+    libcodec2_vndk.vendor \
+    libcppbor.vendor:64 \
+    libdrm.vendor \
+    libgooglecamerahal.vendor:32 \
+    libgooglecamerahalutils.vendor:32 \
+    libhidltransport \
+    libhidltransport.product:32 \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor \
+    libjson \
+    libmedia_ecoservice.vendor \
+    libnetfilter_conntrack:64 \
+    libnfnetlink:64 \
+    libnos_client_citadel:64 \
+    libnos_datagram_citadel:64 \
+    libnos_datagram:64 \
+    libnosprotos:64 \
+    libnos:64 \
+    libnos_transport:64 \
+    libprotobuf-cpp-full.vendor \
+    librmnetctl \
+    libqti_vndfwk_detect.vendor \
+    libsensorndkbridge \
+    libstagefright_bufferpool@2.0.1.vendor \
+    libteeui_hal_support.vendor:64 \
+    libtextclassifier_hash.vendor:64 \
+    libtinycompress \
+    libtinyxml \
+    libvndfwk_detect_jni.qti.vendor \
+    libwifi-hal-qcom \
+    nos_app_avb:64 \
+    nos_app_identity:64 \
+    nos_app_keymaster:64 \
+    nos_app_weaver:64 \
+    qti_telephony_hidl_wrapper \
+    qti_telephony_utils \
+    sound_trigger.primary.msmnile \
+    vendor.display.config@1.0 \
+    vendor.display.config@1.1 \
+    vendor.display.config@1.2 \
+    vendor.display.config@1.3 \
+    vendor.display.config@1.4 \
+    vendor.display.config@1.5 \
+    vendor.display.config@1.6 \
+    vendor.display.config@1.7 \
+    vendor.display.config@1.8 \
+    vendor.display.config@1.0.vendor \
+    vendor.display.config@1.1.vendor \
+    vendor.display.config@1.2.vendor \
+    vendor.display.config@1.3.vendor \
+    vendor.display.config@1.4.vendor \
+    vendor.display.config@1.5.vendor \
+    vendor.display.config@1.6.vendor \
+    vendor.display.config@1.7.vendor \
+    vendor.display.config@1.8.vendor \
+    vendor.display.config@1.9.vendor \
+    vendor.display.config@1.10.vendor \
+    vendor.display.config@1.11.vendor \
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
+    vendor.qti.hardware.cryptfshw@1.0 \
+    vendor.qti.hardware.cryptfshw@1.0.vendor \
+    vendor.qti.hardware.display.allocator@3.0.vendor:64 \
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.display.mapper@3.0.vendor \
+    vendor.qti.hardware.display.mapperextensions@1.0.vendor \
+    vendor.qti.hardware.display.mapperextensions@1.1.vendor
+
 # Privapp Permissions
 PRODUCT_COPY_FILES += \
     device/google/coral/permissions/privapp-permissions-aosp-extended.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-aosp-extended.xml
 
-# Properties
-TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
-
 # Vendor Security Patch Level
-VENDOR_SECURITY_PATCH := "2020-07-05"
+VENDOR_SECURITY_PATCH := "2020-11-05"
