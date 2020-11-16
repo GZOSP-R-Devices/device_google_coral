@@ -42,6 +42,9 @@ AB_OTA_PARTITIONS += \
 # Properties
 TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
 
+PRODUCT_HOST_PACKAGES += \
+vendor.qti.hardware.cryptfshw@1.0
+
 # Vendor packages
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.6-impl-google.vendor:64 \
@@ -76,7 +79,7 @@ PRODUCT_PACKAGES += \
     libnosprotos:64 \
     libnos:64 \
     libnos_transport:64 \
-    libprotobuf-cpp-full.vendor \
+    libprotobuf-cpp-full-vendorcompat \
     librmnetctl \
     libqti_vndfwk_detect.vendor \
     libsensorndkbridge \
@@ -116,7 +119,6 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.10.vendor \
     vendor.display.config@1.11.vendor \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.cryptfshw@1.0 \
     vendor.qti.hardware.cryptfshw@1.0.vendor \
     vendor.qti.hardware.display.allocator@3.0.vendor:64 \
     vendor.qti.hardware.display.mapper@2.0.vendor \
