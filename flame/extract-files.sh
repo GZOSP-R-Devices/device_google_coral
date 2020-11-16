@@ -1,6 +1,7 @@
+
 #!/bin/bash
 #
-# Copyright (C) 2017-2019 The LineageOS Project
+# Copyright (C) 2018-2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,9 +18,7 @@
 set -e
 
 VENDOR=google
-DEVICE=coral
-
-INITIAL_COPYRIGHT_YEAR=2020
+DEVICE=flame
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -34,15 +33,26 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
+if [ $# -eq 0 ]; then
+  SRC=adb
+else
+  if [ $# -eq 1 ]; then
+    SRC=$1
+  else
+    echo "$0: bad number of arguments"
+    echo ""
+    echo "usage: $0 [PATH_TO_EXPANDED_ROM]"
+    echo ""
+    echo "If PATH_TO_EXPANDED_ROM is not specified, blobs will be extracted from"
+    echo "the device using adb pull."
+    exit 1
+  fi
+fi
+
 # Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$GZOSP_ROOT"
 
-# Copyright headers and guards
-write_headers
+extract "$MY_DIR"/proprietary-files-vendor.txt "$SRC"
+extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
-# The standard blobs
-write_makefiles "$MY_DIR"/proprietary-files.txt
-write_makefiles "$MY_DIR"/proprietary-files-vendor.txt true
-
-# Finish
-write_footers
+"$MY_DIR"/setup-makefiles.sh

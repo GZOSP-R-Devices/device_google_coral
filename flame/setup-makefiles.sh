@@ -17,7 +17,7 @@
 set -e
 
 VENDOR=google
-DEVICE=coral
+DEVICE=flame
 
 INITIAL_COPYRIGHT_YEAR=2020
 

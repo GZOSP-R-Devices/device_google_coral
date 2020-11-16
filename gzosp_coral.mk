@@ -19,8 +19,9 @@ TARGET_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=coral \
-    PRIVATE_BUILD_DESC="coral-user 10 QQ3A.200805.001 6578210 release-keys" \
+    PRIVATE_BUILD_DESC="coral-user 11 RP1A.201105.002 6869500 release-keys"
 
-BUILD_FINGERPRINT := google/coral/coral:10/QQ3A.200805.001/6578210:user/release-keys
+BUILD_FINGERPRINT := "google/coral/coral:11/RP1A.201105.002/6869500:user/release-keys"
 
 $(call inherit-product-if-exists, vendor/google/coral/coral-vendor.mk)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
